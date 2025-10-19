@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #fffaf5; /* warm neutral for culinary feel */
+  background: linear-gradient(180deg, #fffaf5 0%, #f9f1ea 40%, #f7efe8 100%); /* warm neutral gradient */
   color: #333;
 }
 
@@ -48,12 +48,13 @@ section.product-grid {
 
 .product-card {
   background: white;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  transform: translateZ(0);
 }
 
 .product-card img {
@@ -63,9 +64,11 @@ section.product-grid {
   border-radius: 10px;
 }
 
-.product-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+.product-card:hover,
+.product-card:focus-within {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18), 0 2px 0 rgba(255, 255, 255, 0.7) inset;
+  border-color: rgba(0, 0, 0, 0.12);
 }
 
 .product-name {
@@ -120,11 +123,13 @@ footer.contact {
 
 .course-card {
   background: #ffffff;
-  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
+  transform: translateZ(0);
 }
 
 .course-card img {
@@ -132,6 +137,121 @@ footer.contact {
   height: 180px;
   object-fit: cover;
   border-radius: 10px;
+}
+.course-card:hover,
+.course-card:focus-within {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18), 0 2px 0 rgba(255, 255, 255, 0.7) inset;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Feature boxes 3D effect */
+.feature {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  transition: transform 260ms ease, box-shadow 260ms ease, filter 260ms ease;
+  transform: translateZ(0);
+}
+
+.feature:hover,
+.feature:focus-within {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18), 0 2px 0 rgba(255, 255, 255, 0.7) inset;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+/* Banner overlay for legibility */
+header.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+header.banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.3) 40%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+}
+
+/* Subtle depth on hover images */
+.course-card img,
+.product-card img {
+  transition: transform 260ms ease;
+}
+
+.course-card:hover img,
+.product-card:hover img {
+  transform: translateZ(0) scale(1.02);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .course-card,
+  .product-card,
+  .feature,
+  .course-card img,
+  .product-card img {
+    transition: none !important;
+  }
+}
+
+/* Responsive banner and typography */
+@media (max-width: 768px) {
+  header.banner {
+    padding: 48px 16px;
+    min-height: 36vh;
+    align-items: flex-end;
+    text-align: right;
+    background-position: right center;
+  }
+  header.banner::before {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0.2) 100%);
+  }
+  header.banner h1 {
+    font-size: 2rem;
+  }
+  header.banner p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header.banner {
+    padding: 36px 14px;
+    min-height: 32vh;
+  }
+  body {
+    background: linear-gradient(180deg, #f8efe8 0%, #f1e7df 50%, #eadfd7 100%);
+  }
+  header.banner h1 {
+    font-size: 1.65rem;
+  }
+  header.banner p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive grids */
+@media (max-width: 768px) {
+  .courses-grid,
+  .features-grid,
+  section.product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .courses-grid,
+  .features-grid,
+  section.product-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
 }
 
 .course-name {
