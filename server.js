@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
     featuredCourses: courses.courses.slice(0, 4),
     whatsapp,
     waNumber,
-    heroImage: "test1.png"
+    heroImage: "test4.png"
   });
 });
 
