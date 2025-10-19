@@ -1,0 +1,170 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fffaf5; /* warm neutral for culinary feel */
+  color: #333;
+}
+
+header.banner {
+  background-color: #8b1e1e; /* rich culinary red fallback */
+  color: white;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header.banner h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header.banner p {
+  font-size: 1.25rem;
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+header.banner .subtitle {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+section.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding: 24px;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.product-name {
+  font-size: 1.25rem;
+  margin: 10px 0;
+}
+
+.product-cost {
+  color: #8b1e1e;
+  font-weight: bold;
+}
+
+footer.contact {
+  text-align: center;
+  background: #8b1e1e;
+  color: white;
+  padding: 16px 0;
+  margin-top: 24px;
+}
+
+/* CTA Button */
+.button.button-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: #2f855a;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.button.button-link:hover {
+  background: #276749;
+}
+
+/* Courses */
+.courses {
+  padding: 24px;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  margin: 0 0 12px 0;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.course-card {
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.course-name {
+  font-size: 1.25rem;
+  margin: 10px 0 6px;
+}
+
+.course-meta {
+  color: #555;
+  margin: 0 0 4px;
+}
+
+.course-dates {
+  color: #8b1e1e;
+  font-weight: bold;
+  margin: 0 0 6px;
+}
+
+/* Features */
+.features { padding: 24px; }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.feature {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 16px;
+}
+.feature-title { margin: 0 0 6px; font-size: 1.1rem; }
+.feature-desc { margin: 0; color: #555; }
+
+/* Contact */
+.contact-form { padding: 24px; text-align: center; }
+.contact-form form { margin-top: 8px; }

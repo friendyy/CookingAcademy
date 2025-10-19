@@ -1,0 +1,8 @@
+{
+  "features": [
+    { "title": "MasterChef-Style Kitchen", "desc": "Train in a real, high-performance kitchen environment guided by chefs." },
+    { "title": "100% Vegetarian", "desc": "All courses and recipes are strictly vegetarian, with eggless baking options." },
+    { "title": "Practice-Based", "desc": "Hands-on sessions with small batches so you actually cook and bake." },
+    { "title": "Beginner → Pro Tracks", "desc": "Structured curriculum across skill levels with certification of completion." }
+  ]
+}

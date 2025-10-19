@@ -1,0 +1,16 @@
+{
+  "courses": [
+    { "name": "Cookies, Brownies, Muffins", "type": "Baking Workshop", "mode": "Offline", "dates": "Oct 24–25", "imgSrc": "test1.png" },
+    { "name": "Online Biscotti & Cookies", "type": "Baking Workshop", "mode": "Online", "dates": "Oct 27", "imgSrc": "test2.png" },
+    { "name": "Online Lebanese & Turkish", "type": "Cooking Workshop", "mode": "Online", "dates": "Oct 27–28", "imgSrc": "test3.png" },
+    { "name": "Bread, Buns & Puffs", "type": "Baking Workshop", "mode": "Offline", "dates": "Oct 28–29", "imgSrc": "test1.png" },
+    { "name": "Online Kebab & Tikka Special", "type": "Workshop", "mode": "Online", "dates": "Oct 29", "imgSrc": "test2.png" },
+    { "name": "Millets Cook n’ Bake", "type": "Workshop", "mode": "Offline", "dates": "Oct 30–Nov 1", "imgSrc": "test3.png" },
+    { "name": "High Tea", "type": "Baking Workshop", "mode": "Offline", "dates": "Oct 30–Nov 1", "imgSrc": "test1.png" },
+    { "name": "Italian Cook n’ Bake", "type": "Workshop", "mode": "Offline", "dates": "Nov 3–5", "imgSrc": "test2.png" },
+    { "name": "International Dessert", "type": "Workshop", "mode": "Offline", "dates": "Nov 3–5", "imgSrc": "test3.png" },
+    { "name": "Japanese – Korean – Thai", "type": "Cooking Workshop", "mode": "Offline", "dates": "Nov 6–8", "imgSrc": "test1.png" },
+    { "name": "Beginners Cake", "type": "Baking Workshop", "mode": "Offline", "dates": "Nov 6–8", "imgSrc": "test2.png" },
+    { "name": "Beginners Complete", "type": "Cooking Workshop", "mode": "Offline", "dates": "Nov 10–15", "imgSrc": "test3.png" }
+  ]
+}
