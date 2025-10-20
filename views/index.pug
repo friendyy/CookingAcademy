@@ -3,6 +3,7 @@ html
   head
     title= title
     link(rel="stylesheet", href="/css/style.css")
+    script(src="/js/tabs.js")
   body
     header.banner(style=`background-image: url('/images/${heroImage || 'plant-banner.jpg'}'); background-size: cover; background-position: right center; padding: 80px 20px; text-align: right; color: white;`)
       h1= title
@@ -11,46 +12,51 @@ html
 
     
 
-    if features
-      section.features
-        h2.section-title Why Choose Us
-        div.features-grid
-          each f in features
-            div.feature
-              h3.feature-title= f.title
-              p.feature-desc= f.desc
+    // Tabbed Content Section
+    section.tabbed-content
+      div.tab-navigation
+        button.tab-button.active(data-tab="why-choose") Why Choose Us
+        button.tab-button(data-tab="featured") Featured Courses
+        button.tab-button(data-tab="upcoming") Upcoming Courses
+      
+      div.tab-content
+        div.tab-panel.active#why-choose
+          if features
+            div.features-grid
+              each f in features
+                div.feature
+                  h3.feature-title= f.title
+                  p.feature-desc= f.desc
 
-    if featuredCourses
-      section.courses
-        h2.section-title Featured Courses
-        div.courses-grid
-          each c in featuredCourses
-            div.course-card
-              img(src=`/images/${c.imgSrc}`, alt=c.name)
-              h3.course-name= c.name
-              p.course-meta #{c.type} · #{c.mode}
-              p.course-dates= c.dates
-              if waNumber
-                a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
+        div.tab-panel#featured
+          if featuredCourses
+            div.courses-grid
+              each c in featuredCourses
+                div.course-card
+                  img(src=`/images/${c.imgSrc}`, alt=c.name)
+                  h3.course-name= c.name
+                  p.course-meta #{c.type} · #{c.mode}
+                  p.course-dates= c.dates
+                  if waNumber
+                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
+
+        div.tab-panel#upcoming
+          if courses
+            div.courses-grid
+              each c in courses
+                div.course-card
+                  img(src=`/images/${c.imgSrc}`, alt=c.name)
+                  h3.course-name= c.name
+                  p.course-meta #{c.type} · #{c.mode}
+                  p.course-dates= c.dates
+                  if waNumber
+                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
 
     section.contact-form
       h2.section-title Enquiry
       form(action=`https://wa.me/${waNumber}`, method="get")
         input(type="hidden", name="text", value="Hi! I have an enquiry about your courses.")
         button.button.button-link(type="submit") WhatsApp Us
-
-    if courses
-      section.courses
-        h2.section-title Upcoming Courses
-        div.courses-grid
-          each c in courses
-            div.course-card
-              img(src=`/images/${c.imgSrc}`, alt=c.name)
-              h3.course-name= c.name
-              p.course-meta #{c.type} · #{c.mode}
-              p.course-dates= c.dates
-              if waNumber
-                a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
 
     footer.contact
       p WhatsApp us at #{whatsapp} to enroll or ask about courses.
