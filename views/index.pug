@@ -1,26 +1,33 @@
 doctype html
-html
+html(lang="en")
   head
     title= title
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(name="description", content= tagline)
     link(rel="stylesheet", href="/css/style.css")
     script(src="/js/tabs.js")
+    //- Preload critical resources
+    link(rel="preload", href="/images/" + heroImage, as="image")
   body
-    header.banner(style=`background-image: url('/images/${heroImage || 'plant-banner.jpg'}'); background-size: cover; background-position: right center; padding: 80px 20px; text-align: right; color: white;`)
+    header.banner(style=`background-image: url('/images/${heroImage || 'plant-banner.jpg'}'); background-size: cover; background-position: right center; padding: 80px 20px; text-align: right; color: white;`, role="banner")
       h1= title
       p.tagline= tagline
       p.subtitle India's 1st MasterChef-Style Kitchen
-
-    
+      //- Add scroll indicator
+      div.scroll-indicator(aria-label="Scroll down to see more content")
+        span Scroll to explore courses
+        div.arrow-down ↓
 
     // Tabbed Content Section
-    section.tabbed-content
-      div.tab-navigation
-        button.tab-button.active(data-tab="why-choose") Why Choose Us
-        button.tab-button(data-tab="featured") Featured Courses
-        button.tab-button(data-tab="upcoming") Upcoming Courses
+    section.tabbed-content(role="main")
+      div.tab-navigation(role="tablist", aria-label="Course information tabs")
+        button.tab-button.active(data-tab="why-choose", role="tab", aria-selected="true", aria-controls="why-choose-panel", id="why-choose-tab") Why Choose Us
+        button.tab-button(data-tab="featured", role="tab", aria-selected="false", aria-controls="featured-panel", id="featured-tab") Featured Courses
+        button.tab-button(data-tab="upcoming", role="tab", aria-selected="false", aria-controls="upcoming-panel", id="upcoming-tab") Upcoming Courses
       
       div.tab-content
-        div.tab-panel.active#why-choose
+        div.tab-panel.active#why-choose-panel(role="tabpanel", aria-labelledby="why-choose-tab")
           if features
             div.features-grid
               each f in features
@@ -28,35 +35,41 @@ html
                   h3.feature-title= f.title
                   p.feature-desc= f.desc
 
-        div.tab-panel#featured
+        div.tab-panel#featured-panel(role="tabpanel", aria-labelledby="featured-tab")
           if featuredCourses
             div.courses-grid
               each c in featuredCourses
-                div.course-card
-                  img(src=`/images/${c.imgSrc}`, alt=c.name)
+                div.course-card(tabindex="0", role="article", aria-label=`Course: ${c.name}`)
+                  img(src=`/images/${c.imgSrc}`, alt=`${c.name} - ${c.type} course image`, loading="lazy")
                   h3.course-name= c.name
                   p.course-meta #{c.type} · #{c.mode}
                   p.course-dates= c.dates
                   if waNumber
-                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
+                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`, aria-label=`Enroll in ${c.name} course via WhatsApp`) Enroll on WhatsApp
 
-        div.tab-panel#upcoming
+        div.tab-panel#upcoming-panel(role="tabpanel", aria-labelledby="upcoming-tab")
           if courses
             div.courses-grid
               each c in courses
-                div.course-card
-                  img(src=`/images/${c.imgSrc}`, alt=c.name)
+                div.course-card(tabindex="0", role="article", aria-label=`Course: ${c.name}`)
+                  img(src=`/images/${c.imgSrc}`, alt=`${c.name} - ${c.type} course image`, loading="lazy")
                   h3.course-name= c.name
                   p.course-meta #{c.type} · #{c.mode}
                   p.course-dates= c.dates
                   if waNumber
-                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`) Enroll on WhatsApp
+                    a.button.button-link(href=`https://wa.me/${waNumber}?text=Hi!%20I%20want%20details%20for%20${encodeURIComponent(c.name)}`, aria-label=`Enroll in ${c.name} course via WhatsApp`) Enroll on WhatsApp
 
-    section.contact-form
+    section.contact-form#contact
       h2.section-title Enquiry
-      form(action=`https://wa.me/${waNumber}`, method="get")
+      form(action=`https://wa.me/${waNumber}`, method="get", role="form", aria-label="Course enquiry form")
         input(type="hidden", name="text", value="Hi! I have an enquiry about your courses.")
-        button.button.button-link(type="submit") WhatsApp Us
+        button.button.button-link(type="submit", aria-label="Open WhatsApp to send enquiry") 
+          span WhatsApp Us
+          span.whatsapp-icon 📱
 
-    footer.contact
+    footer.contact(role="contentinfo")
       p WhatsApp us at #{whatsapp} to enroll or ask about courses.
+      div.social-links
+        a(href=`https://wa.me/${waNumber}`, aria-label="Contact us on WhatsApp", target="_blank", rel="noopener") WhatsApp
+        span.separator |
+        a(href="tel:" + whatsapp, aria-label="Call us") Call Us
